@@ -4,6 +4,7 @@
     <Header />
     <div class="main">
     <Auth />
+    <Videos />
     </div>
     <Footer />
   </div>
@@ -14,6 +15,7 @@
 // import router from "../router";
 import Header from '@/components/Header';
 import Auth from '@/components/Auth';
+import Videos from '@/components/Videos';
 import Footer from '@/components/Footer';
 
 export default {
@@ -22,6 +24,7 @@ export default {
     // router,
     Header,
     Auth,
+    Videos,
     Footer,
   },
 };

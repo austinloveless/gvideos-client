@@ -4,17 +4,18 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       videos: [],
-      apiURL: ''
-    }
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+    };
   },
-  mounted () {
+  mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
       .then(response => {
-        this.videos = response
+        this.videos = response;
+        console.log(response);
       })
   },
 }
