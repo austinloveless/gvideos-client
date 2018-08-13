@@ -50,7 +50,9 @@ Videos and form displays on page load, and user can run a one-time filter of the
 ![Instructor](https://github.com/JoshAaronLevy/gvideos-client/blob/master/Wireframes/Instructor-Page.png)
 
 ## ERD
-https://www.lucidchart.com/invitations/accept/a5827c06-dbeb-4f8b-a5ca-3e19f91d3ca4
+
+![MongoDB Shizz](/Users/joshlevy/Desktop/gvideos/client/Wireframes/Screen Shot 2018-08-13 at 11.46.01 AM.png)
+
 ## Stretch
 
 Basic (or Social Media) Auth with Passport.js, which would allow for user accounts, thus allowing implementation for users to add videos to favorites, rate videos, and save filter settings.
