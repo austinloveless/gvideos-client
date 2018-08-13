@@ -10,7 +10,7 @@
                       type="text"
                       v-model="form.name"
                       required
-                      placeholder="Enter name">
+                      placeholder="PUT YOUR USERNAME HERE">
         </b-form-input>
 
       </b-form-group>
@@ -21,7 +21,7 @@
                       type="text"
                       v-model="form.password"
                       required
-                      placeholder="Enter password">
+                      placeholder="DON'T ENTER THE WRONG ONE">
         </b-form-input>
 
       </b-form-group>
