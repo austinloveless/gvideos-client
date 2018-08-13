@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Auth from '@/components/Auth';
+import Home from '../views/Home';
 
 Vue.use(Router);
 
@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'Auth',
-      component: Auth,
+      component: Home,
     },
   ],
 });

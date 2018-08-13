@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue';
 import App from './App';
 import router from './router';
 import Header from './components/Header';
+// import Footer from './components/Footer';
 import Auth from './components/Auth';
 
 
@@ -18,6 +19,7 @@ new Vue({
   el: '#app',
   router,
   Header,
+  // Footer,
   Auth,
   template: '<App/>',
   components: {

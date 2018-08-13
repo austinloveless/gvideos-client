@@ -1,7 +1,7 @@
 <template>
   <div class="container col-3 jumbotron auth">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      </b-form-group>
+      <!-- </b-form-group> -->
       <b-form-group id="exampleInputGroup2"
                     label="Username:"
                     label-for="exampleInput2">

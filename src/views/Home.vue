@@ -1,8 +1,11 @@
 <template>
   <div class="home">
     <router-view></router-view>
-    <Header/>
-    <Auth/>
+    <Header />
+    <div class="main">
+    <Auth />
+    <Videos />
+    </div>
     <Footer />
   </div>
 </template>
@@ -10,17 +13,25 @@
 <script>
 // @ is an alias to /src
 // import router from "../router";
-import Header from "@/components/Header.vue";
-import Auth from "@/components/Auth.vue";
-import Footer from "@/components/Footer.vue";
+import Header from '@/components/Header';
+import Auth from '@/components/Auth';
+import Videos from '@/components/Videos';
+import Footer from '@/components/Footer';
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     // router,
     Header,
     Auth,
-    Footer
-  }
+    Videos,
+    Footer,
+  },
 };
 </script>
+
+<style scoped>
+.main {
+  padding-top: 100px;
+}
+</style>
