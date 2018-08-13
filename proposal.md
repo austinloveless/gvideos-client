@@ -43,6 +43,14 @@ When a user visits the site, programming tutorial videos populate on the home pa
 
 Videos and form displays on page load, and user can run a one-time filter of the video results.
 
+## Wireframes
+
+![Login](https://github.com/JoshAaronLevy/gvideos-client/blob/master/Wireframes/Login-Page.png)
+![Home/Videos](https://github.com/JoshAaronLevy/gvideos-client/blob/master/Wireframes/User-Page.png)
+![Instructor](https://github.com/JoshAaronLevy/gvideos-client/blob/master/Wireframes/Instructor-Page.png)
+
+## ERD
+
 ## Stretch
 
 Basic (or Social Media) Auth with Passport.js, which would allow for user accounts, thus allowing implementation for users to add videos to favorites, rate videos, and save filter settings.
