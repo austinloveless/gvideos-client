@@ -51,7 +51,7 @@ Videos and form displays on page load, and user can run a one-time filter of the
 
 ## ERD
 
-![MongoDB Shizz]()
+![MongoDB Shizz](https://github.com/JoshAaronLevy/gvideos-client/blob/master/Wireframes/Screen%20Shot%202018-08-13%20at%2011.46.01%20AM.png)
 
 ## Stretch
 
