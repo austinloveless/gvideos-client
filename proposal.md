@@ -37,6 +37,7 @@ When a user visits the site, programming tutorial videos populate on the home pa
 6.  Shrike Videos API
 7.  Heroku (back-end deployment)
 8.  Firebase (front-end deployment)
+9.  Mlabs (mongodb deployment)
 
 ## MVP
 
