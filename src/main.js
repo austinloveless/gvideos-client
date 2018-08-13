@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue';
 import App from './App';
 import router from './router';
 import Header from './components/Header';
+import Auth from './components/Auth';
 
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
@@ -16,6 +17,7 @@ new Vue({
   el: '#app',
   router,
   Header,
+  Auth,
   template: '<App/>',
   components: {
     App,
