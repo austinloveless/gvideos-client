@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "gVideos",
-  "author": "Josh <joshaaronlevy@gmail.com>",
+  "author": "Josh",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
