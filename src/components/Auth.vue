@@ -45,6 +45,7 @@
 
 <script>
 export default {
+  name: 'Auth',
   data() {
     return {
       form: {
@@ -55,7 +56,10 @@ export default {
       },
       foods: [
         { text: 'Select One', value: null },
-        'Carrots', 'Beans', 'Tomatoes', 'Corn',
+        'Carrots',
+        'Beans',
+        'Tomatoes',
+        'Corn',
       ],
       show: true,
     };
@@ -74,7 +78,9 @@ export default {
       this.form.checked = [];
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
-      this.$nextTick(() => { this.show = true });
+      // this.$nextTick(() => {
+      //   this.show = true;
+      // });
     },
   },
 };

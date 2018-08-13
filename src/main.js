@@ -9,6 +9,7 @@ import router from './router';
 import Header from './components/Header';
 import Auth from './components/Auth';
 
+
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
