@@ -95,6 +95,9 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       /* Reset our form values */
+      this.form.category = null;
+      this.form.instructor = null;
+      this.form.tags = [];
       this.form.checked = [];
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
