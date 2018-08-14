@@ -8,7 +8,6 @@
         <b-form-input id="title"
                       type="text"
                       v-model="form.title"
-                      required
                       placeholder="Intro to PostgreSQL">
         </b-form-input>
       </b-form-group>
@@ -17,8 +16,7 @@
                     label-for="exampleInput1">
         <b-form-input id="exampleInput1"
                       type="text"
-                      v-model="form.videourl"
-                      required
+                      v-model="form.url"
                       placeholder="https://www.youtube.com/<URL>">
         </b-form-input>
       </b-form-group>
@@ -37,7 +35,6 @@
                     label-for="category">
         <b-form-select id="category"
                       :options="categories"
-                      required
                       v-model="form.category">
         </b-form-select>
       </b-form-group>
@@ -46,7 +43,6 @@
                     label-for="exampleInput3">
         <b-form-select id="exampleInput3"
                       :options="instructors"
-                      required
                       v-model="form.instructor">
         </b-form-select>
       </b-form-group>
@@ -84,9 +80,10 @@ export default {
   name: 'Upload',
   data() {
     return {
+      APIURL: 'https://gvideos-api.herokuapp.com/api/videos',
       form: {
         title: '',
-        videourl: '',
+        url: '',
         description: '',
         category: null,
         instructor: null,
@@ -122,7 +119,23 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      // alert(JSON.stringify(this.form));
+      return fetch(this.APIURL, {
+        method: 'post',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify(this.form),
+      }).then((resp) => {
+        if (!resp.ok) {
+          if (resp.status >= 400 && resp.status < 500) {
+            return resp.json().then((data) => {
+              const err = { errorMessage: data.message };
+              throw err;
+            });
+          }
+          const err = { errorMessage: 'Blah' };
+          throw err;
+        }
+        return resp.json();
+      });
     },
     onReset(evt) {
       evt.preventDefault();
