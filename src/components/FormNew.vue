@@ -3,6 +3,16 @@
     <h2 class="title">Upload Video</h2>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group id="exampleInputGroup1"
+                    label="Title"
+                    label-for="title">
+        <b-form-input id="title"
+                      type="text"
+                      v-model="form.title"
+                      required
+                      placeholder="Intro to PostgreSQL">
+        </b-form-input>
+      </b-form-group>
+      <b-form-group id="exampleInputGroup1"
                     label="Video URL"
                     label-for="exampleInput1">
         <b-form-input id="exampleInput1"
@@ -75,6 +85,7 @@ export default {
   data() {
     return {
       form: {
+        title: '',
         videourl: '',
         description: '',
         category: null,
@@ -116,6 +127,7 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       /* Reset our form values */
+      this.form.title = '';
       this.form.videourl = '';
       this.form.description = '';
       this.form.category = null;
