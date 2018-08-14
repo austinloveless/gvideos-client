@@ -17,22 +17,7 @@
 
 <script>
 export default {
-  // name: 'videos',
-  // data() {
-  //   return {
-  //     form: {
-  //       email: '',
-  //       name: '',
-  //       food: null,
-  //       checked: [],
-  //     },
-  //     foods: [
-  //       { text: 'Select One', value: null },
-  //       'Carrots', 'Beans', 'Tomatoes', 'Corn',
-  //     ],
-  //     show: true,
-  //   };
-  // },
+
 };
 </script>
 

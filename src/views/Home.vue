@@ -18,7 +18,6 @@
 
 <script>
 // @ is an alias to /src
-// import router from "../router";
 import Header from '@/components/Header';
 import FormFilter from '@/components/FormFilter';
 import Videos from '@/components/Videos';
@@ -27,7 +26,6 @@ import Footer from '@/components/Footer';
 export default {
   name: 'home',
   components: {
-    // router,
     Header,
     FormFilter,
     Videos,

@@ -8,7 +8,7 @@
             <b-form-checkbox value="that">Check that out</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="submit" variant="success">Apply</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
     </div>
@@ -25,6 +25,22 @@ export default {
       },
       show: true,
     };
+  },
+  methods: {
+    onSubmit(evt) {
+      evt.preventDefault();
+      // alert(JSON.stringify(this.form));
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      /* Reset our form values */
+      this.form.checked = [];
+      /* Trick to reset/clear native browser form validation state */
+      this.show = false;
+      // this.$nextTick(() => {
+      //   this.show = true;
+      // });
+    },
   },
 };
 </script>
