@@ -10,11 +10,16 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: #222;
   padding-left: 50px;
   padding-right: 50px;
   align-items: stretch;
-  height: 90px;
+  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: .5px solid #222;
 }
 
 .footer-copy {
@@ -24,8 +29,9 @@
 
 p.footer-copy {
   font-size: 16px;
-  color: #fff;
   align-self: center;
   margin-bottom: 0px;
+  color: #222;
 }
+
 </style>
