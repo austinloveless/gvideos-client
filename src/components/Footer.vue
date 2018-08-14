@@ -1,10 +1,23 @@
 <template>
   <footer class="footer">
     <p class="footer-copy">
-      &copy; 2018 - gVideos
+      &copy; {{getYear()}} - gVideos
     </p>
   </footer>
 </template>
+
+<script>
+export default {
+  name: 'Footer',
+  methods: {
+    getYear() {
+      const now = new Date();
+      const result = now.getFullYear();
+      return result;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .footer {
