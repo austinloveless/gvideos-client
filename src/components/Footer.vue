@@ -10,7 +10,6 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: #222;
   padding-left: 50px;
   padding-right: 50px;
   align-items: stretch;
@@ -30,7 +29,6 @@
 
 p.footer-copy {
   font-size: 16px;
-  color: #fff;
   align-self: center;
   margin-bottom: 0px;
   color: #222;
