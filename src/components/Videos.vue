@@ -9,6 +9,8 @@
           <ul class="tagslist">
             <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
           </ul>
+          <b-button class="button btn-success" type="submit" variant="primary">Update</b-button>
+          <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button>
         </b-media>
       </ul>
 </template>
@@ -96,4 +98,13 @@ export default {
     position: relative;
     color: black;
 }
+
+.button:first-of-type{
+  margin-left: -250px;
+}
+
+.button{
+    margin-top: -50px;
+}
+
 </style>
