@@ -2,12 +2,14 @@
   <div>
     <b-navbar toggleable type="light" variant="light">
       <b-navbar-toggle target="nav_text_collapse"></b-navbar-toggle>
-      <b-navbar-brand href="/">
+      <router-link to="/">
         <img src="../assets/g-logo.png">
-      </b-navbar-brand>
+      </router-link>
       <b-collapse is-nav id="nav_text_collapse">
         <b-navbar-nav>
+          <router-link to="/">Videos</router-link>
           <b-nav-item href="#">Upload</b-nav-item>
+          <router-link to="/login">Login</router-link>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -34,15 +36,15 @@
   margin-left: 10px;
 }
 
-.navbar-brand {
+.router-link-active {
   padding-bottom: 0px;
   padding-top: 0px;
   margin-right: 0px;
-  margin-left: 75px;
 }
 
-.navbar-brand img {
+.router-link-active img {
   height: 85px;
+  margin-left: 75px;
 }
 
 .navbar-collapse {
@@ -56,7 +58,7 @@ ul.navbar-nav {
   margin-right: 75px;
 }
 
-a.nav-link {
+.navbar-nav a {
   display: flex;
   height: 100px;
   padding-left: 15px !important;
@@ -70,13 +72,13 @@ a.nav-link {
   transition: color, background-color, 500ms;
 }
 
-a.nav-link:hover {
+.navbar-nav a:hover {
   background-color: #ae0001;
   color: #fff !important;
   text-decoration: none;
 }
 
-a.nav-link:active {
+.navbar-nav a:active {
   background-color: #ae0001;
   color: #fff !important;
   text-decoration: none;
@@ -141,7 +143,7 @@ a.nav-link:active {
 
 .logo a {
   font-size: 58px;
-  font-family: "Yellowtail", cursive;
+  font-family: 'Yellowtail', cursive;
   color: #ae0001;
   padding-bottom: 7px;
 }
@@ -221,7 +223,7 @@ a.nav-link:active {
 
 .logo a {
   font-size: 42px;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #ae0001;
   padding-bottom: 7px;
 }

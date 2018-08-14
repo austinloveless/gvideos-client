@@ -1,15 +1,10 @@
 <template>
-  <div class="home">
+  <div class="login">
     <router-view></router-view>
     <Header />
     <div class="main">
-      <div class="video-container">
-        <div class="col-lg-3 inline filter-container">
-          <FormFilter/>
-        </div>
-        <div class="col-lg-9 inline">
-          <Videos />
-        </div>
+      <div class="auth">
+        <Auth />
       </div>
     </div>
     <Footer />
@@ -20,17 +15,15 @@
 // @ is an alias to /src
 // import router from "../router";
 import Header from '@/components/Header';
-import FormFilter from '@/components/FormFilter';
-import Videos from '@/components/Videos';
+import Auth from '@/components/Auth';
 import Footer from '@/components/Footer';
 
 export default {
-  name: 'home',
+  name: 'login',
   components: {
     // router,
     Header,
-    FormFilter,
-    Videos,
+    Auth,
     Footer,
   },
 };
@@ -39,13 +32,6 @@ export default {
 <style scoped>
 .main {
   padding-top: 100px;
-}
-.video-container {
-  display: inline-flex;
-  width: 100%;
-}
-.filter-container {
-  border-right: 2px solid gray;
 }
 .inline {
   display: inline-block;

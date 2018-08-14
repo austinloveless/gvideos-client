@@ -4,6 +4,26 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      videos: [],
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+    };
+  },
+  mounted() {
+    fetch(this.apiURL)
+      .then(response => response.json())
+      .then(response => ({
+        videos: response,
+        // console.log(videos);
+      }));
+  },
+};
+</script>
+
+
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

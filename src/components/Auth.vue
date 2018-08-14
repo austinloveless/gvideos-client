@@ -1,5 +1,6 @@
 <template>
   <div class="container col-3 jumbotron auth">
+    <h2 class="title">Login</h2>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <!-- </b-form-group> -->
       <b-form-group id="exampleInputGroup2"
@@ -82,11 +83,14 @@ export default {
 </script>
 
 <style scoped>
-
-  .auth {
-    margin-top: 10%;
-  }
-
+.auth {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
 </style>
 
 <!-- b-form-1.vue -->

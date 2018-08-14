@@ -1,86 +1,45 @@
 <template>
-  <div id='videos'>
-    <div>
-      <b-form>
-        <b-form-group id="exampleInputGroup1"
-                      label="Email address:"
-                      label-for="exampleInput1"
-                      description="We'll never share your email with anyone else.">
-          <b-form-input id="exampleInput1"
-                        type="email"
-                        v-model="form.email"
-                        required
-                        placeholder="Enter email">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group id="exampleInputGroup2"
-                      label="Your Name:"
-                      label-for="exampleInput2">
-          <b-form-input id="exampleInput2"
-                        type="text"
-                        v-model="form.name"
-                        required
-                        placeholder="Enter name">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group id="exampleInputGroup3"
-                      label="Food:"
-                      label-for="exampleInput3">
-          <b-form-select id="exampleInput3"
-                        :options="foods"
-                        required
-                        v-model="form.food">
-          </b-form-select>
-        </b-form-group>
-        <b-form-group id="exampleGroup4">
-          <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
-            <b-form-checkbox value="me">Check me out</b-form-checkbox>
-            <b-form-checkbox value="that">Check that out</b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
-      </b-form>
-    </div>
+  <div class="videos">
+    <b-card title="Card Title"
+            img-src="https://picsum.photos/600/300/?image=25"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2">
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk of the card's content.
+      </p>
+      <b-button href="#" variant="primary">Go somewhere</b-button>
+    </b-card>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'videos',
-  data() {
-    return {
-      form: {
-        email: '',
-        name: '',
-        food: null,
-        checked: [],
-      },
-      foods: [
-        { text: 'Select One', value: null },
-        'Carrots', 'Beans', 'Tomatoes', 'Corn',
-      ],
-      show: true,
-    };
-  },
+  // name: 'videos',
   // data() {
   //   return {
-  //     videos: [],
-  //     apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+  //     form: {
+  //       email: '',
+  //       name: '',
+  //       food: null,
+  //       checked: [],
+  //     },
+  //     foods: [
+  //       { text: 'Select One', value: null },
+  //       'Carrots', 'Beans', 'Tomatoes', 'Corn',
+  //     ],
+  //     show: true,
   //   };
-  // },
-  // mounted() {
-  //   fetch(this.apiURL)
-  //     .then(response => response.json())
-  //     .then(response => ({
-  //       videos: response,
-  //       // console.log(videos);
-  //     }));
   // },
 };
 </script>
 
 <style scoped>
-
+.videos {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 </style>
 
