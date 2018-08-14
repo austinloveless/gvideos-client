@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     thumbnail(url) {
-      if (!/youtube/.test(url)) return '/src/assets/g-logo.png';
+      if (!/youtube/.test(url)) return '/src/assets/galvanize.png';
       const reg = /=(.*)/;
       const vidId = url.match(reg)[1];
       console.log(vidId);
