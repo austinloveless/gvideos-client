@@ -5,6 +5,7 @@
       <h4 class="mt-0 mb-1 title">{{ video.title }}</h4>
       <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
       <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
+      <h6 class="mt-0 mb-1">Added: {{ video.date }}</h6>
       <p>{{ video.description }}</p>
       <ul class="tags">
         <li v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
