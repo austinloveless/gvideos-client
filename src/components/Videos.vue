@@ -98,13 +98,26 @@ export default {
     position: relative;
     color: black;
 }
-
-.button:first-of-type{
+.media.video.shadow {
+  position: relative;
+  padding-bottom: 25px;
+}
+.media.video.shadow button {
+  position: absolute;
+  bottom: 10px;
+}
+.media.video.shadow button:first-of-type {
+  left: 15px;
+}
+.media.video.shadow button:nth-of-type(2n) {
+  left: 115px;
+}
+/* .button:first-of-type{
   margin-left: -250px;
 }
 
 .button{
     margin-top: -50px;
-}
+} */
 
 </style>
