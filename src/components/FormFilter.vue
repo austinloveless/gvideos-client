@@ -7,7 +7,6 @@
                     label-for="category">
           <b-form-select id="category"
                         :options="categories"
-                        required
                         v-model="form.category">
           </b-form-select>
         </b-form-group>
@@ -16,7 +15,6 @@
                       label-for="exampleInput3">
           <b-form-select id="exampleInput3"
                         :options="instructors"
-                        required
                         v-model="form.instructor">
           </b-form-select>
         </b-form-group>
@@ -111,7 +109,8 @@ export default {
 
 <style scoped>
 .filters {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 5%;
+  position: fixed;
+  width: 22%;
 }
 </style>
