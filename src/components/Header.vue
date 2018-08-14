@@ -9,7 +9,7 @@
       <b-collapse is-nav id="nav_text_collapse">
         <b-navbar-nav>
           <router-link to="/">Videos</router-link>
-          <router-link to="/upload">Upload</router-link>
+          <router-link v-if="true" to="/upload">Upload</router-link>
           <router-link to="/login">Login</router-link>
         </b-navbar-nav>
       </b-collapse>
