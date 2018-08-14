@@ -7,7 +7,6 @@
                     label-for="category">
           <b-form-select id="category"
                         :options="categories"
-                        required
                         v-model="form.category">
           </b-form-select>
         </b-form-group>
@@ -16,7 +15,6 @@
                       label-for="exampleInput3">
           <b-form-select id="exampleInput3"
                         :options="instructors"
-                        required
                         v-model="form.instructor">
           </b-form-select>
         </b-form-group>
