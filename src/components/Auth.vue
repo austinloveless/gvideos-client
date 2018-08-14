@@ -1,18 +1,16 @@
 <template>
   <div class="container col-3 jumbotron auth">
+    <h2 class="title">Login</h2>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <!-- </b-form-group> -->
       <b-form-group id="exampleInputGroup2"
                     label="Username:"
                     label-for="exampleInput2">
-
         <b-form-input id="exampleInput2"
                       type="text"
                       v-model="form.name"
                       required
                       placeholder="PUT YOUR USERNAME HERE">
         </b-form-input>
-
       </b-form-group>
       <b-form-group id="exampleInputGroup3"
                     label="Password:"
@@ -23,9 +21,7 @@
                       required
                       placeholder="DON'T ENTER THE WRONG ONE">
         </b-form-input>
-
       </b-form-group>
-
       <div class="text-center">
         <b-form-group id="exampleGroup4">
           <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
@@ -46,16 +42,7 @@ export default {
       form: {
         username: '',
         password: '',
-        food: null,
-        checked: [],
       },
-      foods: [
-        { text: 'Select One', value: null },
-        'Carrots',
-        'Beans',
-        'Tomatoes',
-        'Corn',
-      ],
       show: true,
     };
   },
@@ -68,9 +55,7 @@ export default {
       evt.preventDefault();
       /* Reset our form values */
       this.form.email = '';
-      this.form.name = '';
-      this.form.food = null;
-      this.form.checked = [];
+      this.form.password = '';
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       // this.$nextTick(() => {
@@ -82,11 +67,12 @@ export default {
 </script>
 
 <style scoped>
-
-  .auth {
-    margin-top: 10%;
-  }
-
+.auth {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
 </style>
-
-<!-- b-form-1.vue -->

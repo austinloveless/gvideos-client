@@ -3,8 +3,14 @@
     <router-view></router-view>
     <Header />
     <div class="main">
-    <Auth />
-    <Videos />
+      <div class="video-container">
+        <div class="col-lg-3 inline filter-container">
+          <FormFilter/>
+        </div>
+        <div class="col-lg-9 inline">
+          <Videos />
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -12,18 +18,16 @@
 
 <script>
 // @ is an alias to /src
-// import router from "../router";
 import Header from '@/components/Header';
-import Auth from '@/components/Auth';
+import FormFilter from '@/components/FormFilter';
 import Videos from '@/components/Videos';
 import Footer from '@/components/Footer';
 
 export default {
   name: 'home',
   components: {
-    // router,
     Header,
-    Auth,
+    FormFilter,
     Videos,
     Footer,
   },
@@ -33,5 +37,15 @@ export default {
 <style scoped>
 .main {
   padding-top: 100px;
+}
+.video-container {
+  display: inline-flex;
+  width: 100%;
+}
+.filter-container {
+  border-right: 2px solid gray;
+}
+.inline {
+  display: inline-block;
 }
 </style>
