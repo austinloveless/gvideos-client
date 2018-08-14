@@ -5,7 +5,7 @@
       <router-link to="/">
         <img src="../assets/g-logo.png">
       </router-link>
-      <h1 class="videos">[Videos]</h1>
+      <h1 class="videos"><span class="bracket">[</span>Videos<span class="bracket">]</span></h1>
       <b-collapse is-nav id="nav_text_collapse">
         <b-navbar-nav>
           <router-link to="/">Videos</router-link>
@@ -241,5 +241,9 @@ ul.navbar-nav {
 
 .videos{
   color: #f79020;
+}
+
+.bracket{
+  color: #222;
 }
 </style>
