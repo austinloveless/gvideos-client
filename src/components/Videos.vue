@@ -15,18 +15,18 @@
 
 <script>
 export default {
-  name: 'Videos',
+  name: "Videos",
   data() {
     return {
       videos: [],
       tags: [],
-      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+      apiURL: "https://gvideos-api.herokuapp.com/api/videos"
     };
   },
   mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
-      .then((response) => {
+      .then(response => {
         this.videos = response.reverse();
         console.log(this.videos);
       });
@@ -38,10 +38,31 @@ export default {
       console.log(vidId);
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
-    },
-  },
-
+    }
+  }
 };
+const APIURL = "https://gvideos-api.herokuapp.com/api/videos";
+
+function createTodo(val) {
+  return fetch(APIURL, {
+    method: "post",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ title: val })
+  }).then(resp => {
+    if (!resp.ok) {
+      if (resp.status >= 400 && resp.status < 500) {
+        return resp.json().then(data => {
+          let err = { errorMessage: data.message };
+          throw err;
+        });
+      } else {
+        let err = { errorMessage: "Blah" };
+        throw err;
+      }
+    }
+    return resp.json();
+  });
+}
 </script>
 
 <style scoped>
@@ -92,5 +113,4 @@ export default {
   max-width: 100%;
   align-self: center;
 }
-
 </style>
