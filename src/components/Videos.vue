@@ -1,7 +1,7 @@
 <template>
       <ul class="video-list list-unstyled">
         <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
-          <b-img slot="aside" blank blank-color="#f79020" width="175" alt="placeholder" />
+          <img slot="aside" :src="thumbnail(video.url)" width="250" alt="placeholder" />
           <h4 class="mt-0 mb-1 title">{{ video.title }}</h4>
           <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
           <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
@@ -31,6 +31,16 @@ export default {
         console.log(this.videos);
       });
   },
+  methods: {
+    thumbnail(url) {
+      const reg = /=(.*)/;
+      const vidId = url.match(reg)[1];
+      console.log(vidId);
+      const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
+      return thumb;
+    },
+  },
+
 };
 </script>
 
@@ -76,6 +86,11 @@ export default {
   padding: 15px;
   margin: 10px;
   border-radius: 10px;
+}
+
+.video img {
+  max-width: 100%;
+  align-self: center;
 }
 
 </style>
