@@ -111,7 +111,8 @@ export default {
 
 <style scoped>
 .filters {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 5%;
+  position: fixed;
+  width: 22%;
 }
 </style>
