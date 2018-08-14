@@ -5,6 +5,7 @@
       <router-link to="/">
         <img src="../assets/g-logo.png">
       </router-link>
+      <h1 class="videos">[Videos]</h1>
       <b-collapse is-nav id="nav_text_collapse">
         <b-navbar-nav>
           <router-link to="/">Videos</router-link>
@@ -73,7 +74,7 @@ ul.navbar-nav {
 }
 
 .navbar-nav a:hover {
-  background-color: #ae0001;
+  background-color: #f79020;
   color: #fff !important;
   text-decoration: none;
 }
@@ -236,5 +237,9 @@ ul.navbar-nav {
 .logo a:hover {
   color: #444;
   text-decoration: none;
+}
+
+.videos{
+  color: #f79020;
 }
 </style>
