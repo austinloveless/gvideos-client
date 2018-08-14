@@ -27,7 +27,7 @@ export default {
     fetch(this.apiURL)
       .then(response => response.json())
       .then((response) => {
-        this.videos = response;
+        this.videos = response.reverse();
         console.log(this.videos);
       });
   },
