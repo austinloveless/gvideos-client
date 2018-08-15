@@ -16,7 +16,7 @@
                     label="Password:"
                     label-for="exampleInput3">
         <b-form-input id="exampleInput3"
-                      type="text"
+                      type="password"
                       v-model="form.password"
                       required
                       placeholder="DON'T ENTER THE WRONG ONE">
@@ -80,5 +80,9 @@ export default {
 .title {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.auth {
+  margin-top: 60px;
 }
 </style>

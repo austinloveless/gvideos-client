@@ -8,6 +8,7 @@
         <b-form-input id="username"
                       type="text"
                       v-model="form.username"
+                      placeholder="PICK A USERNAME"
                       required>
         </b-form-input>
       </b-form-group>
@@ -17,6 +18,7 @@
         <b-form-input id="password"
                       type="password"
                       v-model="form.password"
+                      placeholder="MAKE IT A GOOD ONE"
                       required>
         </b-form-input>
       </b-form-group>
@@ -69,8 +71,8 @@ export default {
 
 <style scoped>
 .auth {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 60px;
+  /* margin-bottom: 100px; */
 }
 .title {
   text-align: center;
