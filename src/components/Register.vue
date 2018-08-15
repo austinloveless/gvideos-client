@@ -1,34 +1,27 @@
 <template>
   <div class="container col-3 jumbotron auth">
-    <h2 class="title">Login</h2>
+    <h2 class="title">Register</h2>
     <b-form @submit="onSubmit">
-      <b-form-group id="exampleInputGroup2"
-                    label="Username:"
-                    label-for="exampleInput2">
-        <b-form-input id="exampleInput2"
+      <b-form-group id="usernameGroup"
+                    label="Username"
+                    label-for="username">
+        <b-form-input id="username"
                       type="text"
                       v-model="form.username"
-                      required
-                      placeholder="PUT YOUR USERNAME HERE">
+                      required>
         </b-form-input>
       </b-form-group>
-      <b-form-group id="exampleInputGroup3"
-                    label="Password:"
-                    label-for="exampleInput3">
-        <b-form-input id="exampleInput3"
-                      type="text"
+      <b-form-group id="passwordGroup"
+                    label="Password"
+                    label-for="password">
+        <b-form-input id="password"
+                      type="password"
                       v-model="form.password"
-                      required
-                      placeholder="DON'T ENTER THE WRONG ONE">
+                      required>
         </b-form-input>
       </b-form-group>
       <div class="text-center">
-        <b-form-group id="exampleGroup4">
-          <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
-            <b-form-checkbox value="forget">Forget me</b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
-        <b-button class="btn-success" type="submit" variant="primary">Log in</b-button>
+        <b-button class="btn-success" type="submit" name="submit" value="submit" variant="primary">Register</b-button>
     </div>
     </b-form>
   </div>
@@ -36,21 +29,22 @@
 
 <script>
 export default {
-  name: 'Auth',
+  name: 'Register',
   data() {
     return {
-      loginURL: 'https://gvideos-api.herokuapp.com/auth/login',
+      registerURL: 'https://gvideos-api.herokuapp.com/auth/register',
       form: {
         username: '',
         password: '',
       },
       show: true,
+      // users: [],
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      return fetch(this.loginURL, {
+      return fetch(this.registerURL, {
         method: 'post',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(this.form),
@@ -74,8 +68,9 @@ export default {
 </script>
 
 <style scoped>
-.card-body {
-  padding: 0px;
+.auth {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 .title {
   text-align: center;

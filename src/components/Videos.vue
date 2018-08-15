@@ -1,18 +1,20 @@
 <template>
-      <ul class="video-list list-unstyled">
-        <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
-          <img slot="aside" :src="thumbnail(video.url)" width="250" alt="placeholder" />
-          <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
-          <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
-          <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
-          <p>{{ video.description }}</p>
-          <ul class="tagslist">
-            <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
-          </ul>
-          <b-button class="button btn-success" type="submit" variant="primary">Update</b-button>
-          <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button>
-        </b-media>
+  <ul class="video-list list-unstyled">
+    <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
+      <img slot="aside" :src="thumbnail(video.url)" alt="placeholder" />
+      <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
+      <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
+      <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
+      <p>{{ video.description }}</p>
+      <ul class="tagslist">
+        <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
       </ul>
+      <!-- <b-button class="button btn-success" type="submit" variant="primary">Update</b-button> -->
+      <!-- <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button> -->
+      <b-btn v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
+      <b-btn v-b-modal.modal1 variant="danger">Delete</b-btn>
+    </b-media>
+  </ul>
 </template>
 
 <script>
@@ -30,14 +32,13 @@ export default {
       .then(response => response.json())
       .then(response => {
         this.videos = response.reverse();
-        console.log(this.videos);
       });
   },
   methods: {
     thumbnail(url) {
+      if (!/youtube/.test(url)) return 'https://s3-us-west-2.amazonaws.com/g90/gIcon.png';
       const reg = /=(.*)/;
       const vidId = url.match(reg)[1];
-      console.log(vidId);
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
     }
@@ -79,6 +80,10 @@ function createTodo(val) {
 
 .video-list li {
   margin-bottom: 20px;
+}
+
+.video-list li img {
+  height: 140px;
 }
 
 .taglist {
