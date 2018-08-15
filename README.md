@@ -2,6 +2,10 @@
 
 > gVideos
 
+## Deployed URL
+
+![gVideos](https://g90-videos.firebaseapp.com/)
+
 ## Build Setup
 
 ``` bash
