@@ -1,6 +1,7 @@
 <template>
   <div class="container col-3 jumbotron auth">
     <h2 class="title">Login</h2>
+
     <b-form @submit="onSubmit">
       <b-form-group id="exampleInputGroup2"
                     label="Username:"
@@ -42,9 +43,9 @@ export default {
       loginURL: 'https://gvideos-api.herokuapp.com/auth/login',
       form: {
         username: '',
-        password: '',
+        password: ''
       },
-      show: true,
+      show: true
     };
   },
   methods: {
@@ -53,23 +54,25 @@ export default {
       return fetch(this.loginURL, {
         method: 'post',
         headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify(this.form),
-      }).then((resp) => {
+        body: JSON.stringify(this.form)
+      }).then(resp => {
         console.log(resp);
         if (!resp.ok) {
           if (resp.status >= 400 || resp.status < 500) {
-            return resp.json().then((data) => {
+            return resp.json().then(data => {
               const err = { errorMessage: data.message };
               throw err;
             });
+          } else if (resp.status === 200) {
+            console.log('Yay you are logged in');
           }
-          const err = { errorMessage: 'Blah' };
-          throw err;
+          // const err = { errorMessage: 'Blah' };
+          // throw err;
         }
         return resp.json();
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -81,7 +84,6 @@ export default {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .auth {
   margin-top: 60px;
 }
