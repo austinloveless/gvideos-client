@@ -73,4 +73,7 @@ export default {
 .inline {
   display: inline-block;
 }
+.modal-footer {
+  display: none !important;
+}
 </style>
