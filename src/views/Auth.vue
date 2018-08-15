@@ -72,8 +72,8 @@ export default {
 }
 .auth {
   /* margin-top: 100px; */
-  margin-bottom: 100px;
-  margin-top: -100px;
+  margin-bottom: 1000px;
+  margin-top: -1000px;
 }
 
 
