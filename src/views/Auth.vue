@@ -46,9 +46,6 @@ export default {
       tabIndex: 0
     };
   },
-  mounted() {
-    console.log(decode);
-  }
 };
 </script>
 

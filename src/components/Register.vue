@@ -63,7 +63,10 @@ export default {
           throw err;
         }
         return resp.json();
-      });
+      })
+      .then((json)=>{
+        localStorage.setItem('token', json.token)
+      })
     },
   },
 };
