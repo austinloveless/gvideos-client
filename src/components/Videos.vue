@@ -19,18 +19,18 @@
 
 <script>
 export default {
-  name: 'Videos',
+  name: "Videos",
   data() {
     return {
       videos: [],
       tags: [],
-      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+      apiURL: "https://gvideos-api.herokuapp.com/api/videos"
     };
   },
   mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
-      .then((response) => {
+      .then(response => {
         this.videos = response.reverse();
       });
   },
@@ -41,10 +41,31 @@ export default {
       const vidId = url.match(reg)[1];
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
-    },
-  },
-
+    }
+  }
 };
+const APIURL = "https://gvideos-api.herokuapp.com/api/videos";
+
+function createTodo(val) {
+  return fetch(APIURL, {
+    method: "post",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ title: val })
+  }).then(resp => {
+    if (!resp.ok) {
+      if (resp.status >= 400 && resp.status < 500) {
+        return resp.json().then(data => {
+          let err = { errorMessage: data.message };
+          throw err;
+        });
+      } else {
+        let err = { errorMessage: "Blah" };
+        throw err;
+      }
+    }
+    return resp.json();
+  });
+}
 </script>
 
 <style scoped>
@@ -100,8 +121,8 @@ export default {
   align-self: center;
 }
 .media.video.shadow a {
-    position: relative;
-    color: black;
+  position: relative;
+  color: black;
 }
 .media.video.shadow {
   position: relative;
@@ -124,5 +145,4 @@ export default {
 .button{
     margin-top: -50px;
 } */
-
 </style>
