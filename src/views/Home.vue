@@ -26,6 +26,8 @@ import Videos from '@/components/Videos';
 import UpdateModal from '@/components/UpdateModal';
 import DeleteModal from '@/components/DeleteModal';
 import Footer from '@/components/Footer';
+import VueJwtDecode from 'vue-jwt-decode';
+
 
 export default {
   userLoggedIn: false,

@@ -28,22 +28,22 @@
   </div> -->
 
 <script>
-import Header from '@/components/Header';
-import Auth from '@/components/Auth';
-import Register from '@/components/Register';
-import Footer from '@/components/Footer';
+import Header from "@/components/Header";
+import Auth from "@/components/Auth";
+import Register from "@/components/Register";
+import Footer from "@/components/Footer";
 
 export default {
-  name: 'auth',
+  name: "auth",
   components: {
     Header,
     Auth,
     Register,
-    Footer,
+    Footer
   },
   data() {
     return {
-      tabIndex: 0,
+      tabIndex: 0
     };
   },
 };
