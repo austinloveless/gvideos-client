@@ -10,18 +10,18 @@
                         v-model="form.category">
           </b-form-select>
         </b-form-group>
-        <b-form-group id="exampleInputGroup3"
+        <b-form-group id="instructors"
                       label="Instructor"
-                      label-for="exampleInput3">
-          <b-form-select id="exampleInput3"
+                      label-for="instructor">
+          <b-form-select id="instructor"
                         :options="instructors"
                         v-model="form.instructor">
           </b-form-select>
         </b-form-group>
-        <b-form-group id="exampleGroup4"
+        <b-form-group id="tagGroup"
                       label="Tags"
-                      label-for="exampleChecks">
-          <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
+                      label-for="tags">
+          <b-form-checkbox-group v-model="form.checked" id="tags">
             <b-form-checkbox value="react">React</b-form-checkbox>
             <b-form-checkbox value="vue">Vue.js</b-form-checkbox>
             <b-form-checkbox value="angular">Angular</b-form-checkbox>
@@ -109,7 +109,7 @@ export default {
 
 <style scoped>
 .filters {
-  margin-top: 5%;
+  margin-top: 2%;
   position: fixed;
   width: 22%;
 }

@@ -2,7 +2,7 @@
   <div class="container col-4 jumbotron upload">
     <h2 class="title">Upload Video</h2>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="exampleInputGroup1"
+      <b-form-group id="titleGroup"
                     label="Title"
                     label-for="title">
         <b-form-input id="title"
@@ -11,19 +11,19 @@
                       placeholder="Intro to PostgreSQL">
         </b-form-input>
       </b-form-group>
-      <b-form-group id="exampleInputGroup1"
+      <b-form-group id="urlGroup"
                     label="Video URL"
-                    label-for="exampleInput1">
-        <b-form-input id="exampleInput1"
+                    label-for="url">
+        <b-form-input id="url"
                       type="text"
                       v-model="form.url"
                       placeholder="https://www.youtube.com/<URL>">
         </b-form-input>
       </b-form-group>
-      <b-form-group id="exampletextarea1"
+      <b-form-group id="descriptionGroup"
                     label="Description"
-                    label-for="textarea1">
-        <b-form-textarea id="textarea1"
+                    label-for="description">
+        <b-form-textarea id="description"
                           v-model="form.description"
                           placeholder="Video summary"
                           :rows="3"
@@ -46,10 +46,10 @@
                       v-model="form.instructor">
         </b-form-select>
       </b-form-group>
-      <b-form-group id="exampleGroup4"
+      <b-form-group id="tagGroup"
                     label="Tags"
-                    label-for="exampleChecks">
-        <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
+                    label-for="tags">
+        <b-form-checkbox-group v-model="form.checked" id="tags">
           <b-form-checkbox value="react">React</b-form-checkbox>
           <b-form-checkbox value="vue">Vue.js</b-form-checkbox>
           <b-form-checkbox value="angular">Angular</b-form-checkbox>
@@ -70,7 +70,6 @@
         </b-form-checkbox-group>
       </b-form-group>
       <b-button type="submit" variant="success">Submit</b-button>
-      <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
     </b-form>
   </div>
 </template>
