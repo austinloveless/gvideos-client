@@ -126,4 +126,8 @@ export default {
   position: fixed;
   width: 22%;
 }
+.custom-control-inline {
+  margin-right: .5rem;
+  width: 30%;
+}
 </style>

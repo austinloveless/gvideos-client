@@ -182,5 +182,9 @@ export default {
   text-align: center;
   margin-bottom: 20px;
 }
+.custom-control-inline {
+  margin-right: .5rem;
+  width: 30%;
+}
 </style>
 
