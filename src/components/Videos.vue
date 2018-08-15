@@ -1,7 +1,7 @@
 <template>
       <ul class="video-list list-unstyled">
         <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
-          <img slot="aside" :src="thumbnail(video.url)" width="250" alt="placeholder" />
+          <img slot="aside" :src="thumbnail(video.url)" alt="placeholder" />
           <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
           <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
           <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     thumbnail(url) {
+      if (!/youtube/.test(url)) return 'https://s3-us-west-2.amazonaws.com/g90/gIcon.png';
       const reg = /=(.*)/;
       const vidId = url.match(reg)[1];
       console.log(vidId);
@@ -58,6 +59,10 @@ export default {
 
 .video-list li {
   margin-bottom: 20px;
+}
+
+.video-list li img {
+  height: 140px;
 }
 
 .taglist {
