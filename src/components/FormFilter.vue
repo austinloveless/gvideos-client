@@ -54,6 +54,7 @@ export default {
   name: 'filters',
   data() {
     return {
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
       form: {
         category: null,
         instructor: null,
@@ -102,10 +103,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.form.tags);
-    },
-    applyFilter() {
-      console.log('HI');
+      console.log("Category selected: ", this.form.category);
+      fetch(this.apiURL + "/category/" + this.form.category)
+        .then(response => response.json())
+        .then((response) => {
+          this.videos = response.reverse();
+          console.log("RESPONSE: ", response);
+        });
     },
     onReset(evt) {
       evt.preventDefault();
