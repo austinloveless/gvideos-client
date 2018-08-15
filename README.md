@@ -11,6 +11,7 @@
 - Austin Loveless
 - Levi Boenish
 - Mark Newcomb
+- Josh Levy
 
 ## Build Setup
 
