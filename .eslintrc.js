@@ -26,6 +26,8 @@ module.exports = {
   'rules': {
     'no-console': 0,
     'no-underscore-dangle': 0,
+    'no-empty': false,
+    'allowEmptyCatch': false,
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
@@ -33,6 +35,6 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']
     }],
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 0 : 0
   }
 }

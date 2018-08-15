@@ -59,10 +59,11 @@ export default {
         instructor: null,
         tags: [],
       },
-      categories: [{
-        text: 'Select One',
-        value: null,
-      },
+      categories: [
+        {
+          text: 'Select One',
+          value: null,
+        },
         'Front-End Design',
         'Front-End Development',
         'Front-End Frameworks',
@@ -73,10 +74,11 @@ export default {
         'Workflow (Git)',
         'Other',
       ],
-      instructors: [{
-        text: 'Select One',
-        value: null,
-      },
+      instructors: [
+        {
+          text: 'Select One',
+          value: null,
+        },
         'Marlena Baker',
         'Berto',
         'Patrick Biffle',
@@ -117,6 +119,8 @@ export default {
 };
 </script>
 
+https://gvideos-api.herokuapp.com/api/videos/?category=%22frontend%22
+
 <style scoped>
 .filters {
   margin-top: 2%;
@@ -124,7 +128,7 @@ export default {
   width: 22%;
 }
 .custom-control-inline {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   width: 30%;
 }
 </style>

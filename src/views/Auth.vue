@@ -55,7 +55,10 @@ export default {
   /* display: flex;
   justify-content: center; */
   width: 100vw;
-  position:fixed;
+  position: fixed;
+}
+.tabs {
+  border-bottom: none !important;
 }
 .card-header {
   display: flex;
@@ -75,7 +78,4 @@ export default {
   margin-bottom: 100px;
   margin-top: -100px;
 }
-
-
-
 </style>
