@@ -12,7 +12,8 @@
       <!-- <b-button class="button btn-success" type="submit" variant="primary">Update</b-button> -->
       <!-- <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button> -->
       <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
-      <b-btn v-if="token" v-b-modal.modal1 variant="danger">Delete</b-btn>
+      <!-- <b-btn v-if="token" v-b-modal.modal1 variant="danger">Delete</b-btn> -->
+      <b-btn v-if="token" @click="onDelete(video)" variant="danger" v-bind="video">Delete</b-btn>
     </b-media>
   </ul>
 </template>
@@ -24,29 +25,53 @@ export default {
     return {
       token: false,
       videos: [],
+      video: this.video,
       tags: [],
-      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos'
     };
   },
   mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
-      .then((response) => {
+      .then(response => {
         this.videos = response.reverse();
       });
-      if (localStorage.getItem('token')) {
-        this.token = true;
-      }    
+    if (localStorage.getItem('token')) {
+      this.token = true;
+    }
   },
   methods: {
     thumbnail(url) {
-      if (!/youtube/.test(url)) return 'https://s3-us-west-2.amazonaws.com/g90/gIcon.png';
+      if (!/youtube/.test(url))
+        return 'https://s3-us-west-2.amazonaws.com/g90/gIcon.png';
       const reg = /=(.*)/;
       const vidId = url.match(reg)[1];
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
     },
-  },
+    videoCheck(video) {
+      this.video = video;
+      console.log(video._id);
+    },
+    onDelete(video) {
+      return fetch(this.apiURL, {
+        method: 'delete'
+      }).then(resp => {
+        console.log(resp);
+        if (!resp.ok) {
+          if (resp.status >= 400 && resp.status < 500) {
+            return resp.json().then(data => {
+              const err = { errorMessage: data.message };
+              throw err;
+            });
+          }
+          const err = { errorMessage: 'Blah' };
+          throw err;
+        }
+        return resp.json();
+      });
+    }
+  }
 };
 </script>
 
@@ -94,8 +119,8 @@ export default {
   align-self: center;
 }
 .media.video.shadow a {
-    position: relative;
-    color: black;
+  position: relative;
+  color: black;
 }
 .media.video.shadow {
   position: relative;

@@ -10,7 +10,8 @@
         <b-navbar-nav>
           <router-link to="/">Videos</router-link>
           <router-link v-if="token" to="/upload">Upload</router-link>
-          <router-link to="/login">Login</router-link>
+          <router-link v-if="!token" to="/login">Login</router-link>
+          <a v-if="token" @click="signOut">Logout</a>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -23,15 +24,21 @@ export default {
   data() {
     return {
       token: false
-    }
+    };
   },
   mounted() {
-      if (localStorage.getItem('token')) {
-        this.token = true;
+    // localStorage.setItem('token', 'anything you fuckin want');
+    if (localStorage.getItem('token')) {
+      this.token = true;
+    }
+  },
+  methods: {
+    signOut() {
+      console.log('Howdy!');
+      localStorage.clear();
     }
   }
-}
-
+};
 </script>
 
 <style scoped>
