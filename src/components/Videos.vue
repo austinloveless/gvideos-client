@@ -96,6 +96,7 @@ export default {
 .media.video.shadow {
   position: relative;
   padding-bottom: 25px;
+  min-height: 218px;
 }
 .media.video.shadow button {
   position: absolute;
