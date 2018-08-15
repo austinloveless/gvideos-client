@@ -138,11 +138,13 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      const token = localStorage.getItem("token")
       return fetch(this.APIURL, {
         method: 'post',
-        headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify(this.form)
-      }).then(resp => {
+        headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }),
+        body: JSON.stringify(this.form),
+      }).then((resp) => {
+
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
             return resp.json().then(data => {
@@ -154,9 +156,13 @@ export default {
           throw err;
         }
         return resp.json();
-      });
-    }
-  }
+      })
+      .then(json=>{
+        console.log(json);
+      })
+    },
+  },
+
 };
 </script>
 
@@ -176,4 +182,3 @@ export default {
   width: 30%;
 }
 </style>
-
