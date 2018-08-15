@@ -10,6 +10,7 @@
 
 - Austin Loveless
 - Levi Boenish
+- Mark Newcomb
 
 ## Build Setup
 
