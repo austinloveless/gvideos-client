@@ -37,9 +37,9 @@ export default {
       registerURL: 'https://gvideos-api.herokuapp.com/auth/register',
       form: {
         username: '',
-        password: '',
+        password: ''
       },
-      show: true,
+      show: true
       // users: [],
     };
   },
@@ -49,15 +49,17 @@ export default {
       return fetch(this.registerURL, {
         method: 'post',
         headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify(this.form),
-      }).then((resp) => {
+        body: JSON.stringify(this.form)
+      }).then(resp => {
         console.log(resp);
         if (!resp.ok) {
           if (resp.status >= 400 || resp.status < 500) {
-            return resp.json().then((data) => {
+            return resp.json().then(data => {
               const err = { errorMessage: data.message };
               throw err;
             });
+          } else if (resp.status === 200) {
+            localStorage.setItem('Balls');
           }
           const err = { errorMessage: 'Blah' };
           throw err;
@@ -69,6 +71,7 @@ export default {
       })
     },
   },
+
 };
 </script>
 
