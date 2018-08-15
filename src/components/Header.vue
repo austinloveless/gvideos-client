@@ -9,13 +9,30 @@
       <b-collapse is-nav id="nav_text_collapse">
         <b-navbar-nav>
           <router-link to="/">Videos</router-link>
-          <router-link v-if="true" to="/upload">Upload</router-link>
+          <router-link v-if="token" to="/upload">Upload</router-link>
           <router-link to="/login">Login</router-link>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Header',
+  data() {
+    return {
+      token: false
+    }
+  },
+  mounted() {
+      if (localStorage.getItem('token')) {
+        this.token = true;
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 .bg-light {
