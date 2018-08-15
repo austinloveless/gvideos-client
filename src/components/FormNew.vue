@@ -1,7 +1,7 @@
 <template>
   <div class="container col-4 jumbotron upload">
     <h2 class="title">Upload Video</h2>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @submit="onSubmit">
       <b-form-group id="titleGroup"
                     label="Title"
                     label-for="title">
@@ -54,7 +54,7 @@
       <b-form-group id="tagGroup"
                     label="Tags"
                     label-for="tags">
-        <b-form-checkbox-group v-model="form.checked" id="tags" required>
+        <b-form-checkbox-group v-model="form.checked" id="tags">
           <b-form-checkbox value="React">React</b-form-checkbox>
           <b-form-checkbox value="Vue">Vue.js</b-form-checkbox>
           <b-form-checkbox value="Angular">Angular</b-form-checkbox>
@@ -92,12 +92,13 @@ export default {
         description: '',
         category: null,
         instructor: null,
-        tags: [],
+        tags: []
       },
-      categories: [{
-        text: 'Select One',
-        value: null,
-      },
+      categories: [
+        {
+          text: 'Select One',
+          value: null
+        },
         'Front-End Design',
         'Front-End Development',
         'Front-End Frameworks',
@@ -106,12 +107,13 @@ export default {
         'Full-Stack',
         'Object Oriented Programming',
         'Workflow (Git)',
-        'Other',
+        'Other'
       ],
-      instructors: [{
-        text: 'Select One',
-        value: null,
-      },
+      instructors: [
+        {
+          text: 'Select One',
+          value: null
+        },
         'Marlena Baker',
         'Berto',
         'Patrick Biffle',
@@ -128,22 +130,24 @@ export default {
         'James Schultz',
         'Matt Winzer',
         'Other - Galvanize',
-        'Other - Non-Galvanize',
+        'Other - Non-Galvanize'
       ],
-      show: true,
+      show: true
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      const token = localStorage.getItem("token")
       return fetch(this.APIURL, {
         method: 'post',
-        headers: new Headers({ 'Content-Type': 'application/json' }),
+        headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }),
         body: JSON.stringify(this.form),
       }).then((resp) => {
+
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
-            return resp.json().then((data) => {
+            return resp.json().then(data => {
               const err = { errorMessage: data.message };
               throw err;
             });
@@ -152,9 +156,13 @@ export default {
           throw err;
         }
         return resp.json();
-      });
+      })
+      .then(json=>{
+        console.log(json);
+      })
     },
   },
+
 };
 </script>
 
@@ -170,8 +178,7 @@ export default {
   margin-bottom: 20px;
 }
 .custom-control-inline {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   width: 30%;
 }
 </style>
-
