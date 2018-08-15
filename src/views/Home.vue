@@ -28,6 +28,7 @@ import DeleteModal from '@/components/DeleteModal';
 import Footer from '@/components/Footer';
 
 export default {
+  userLoggedIn: false,
   name: 'home',
   components: {
     Header,
@@ -35,26 +36,26 @@ export default {
     Videos,
     UpdateModal,
     DeleteModal,
-    Footer,
+    Footer
   },
   data() {
     return {
       videos: [],
-      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos'
     };
   },
   mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
-      .then((response) => {
+      .then(response => {
         this.videos = response;
       });
   },
   methods: {
     addVideo(video) {
       this.videos.push(video);
-    },
-  },
+    }
+  }
 };
 </script>
 

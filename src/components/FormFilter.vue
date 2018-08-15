@@ -1,7 +1,7 @@
 <template>
   <div id='filters' class="filters">
     <div>
-      <b-form>
+      <b-form @submit.prevent="onSubmit">
         <b-form-group id="categories"
                     label="Category"
                     label-for="category">
@@ -22,24 +22,24 @@
                       label="Tags"
                       label-for="tags">
           <b-form-checkbox-group v-model="form.checked" id="tags">
-            <b-form-checkbox value="React">React</b-form-checkbox>
-            <b-form-checkbox value="Vue">Vue.js</b-form-checkbox>
-            <b-form-checkbox value="Angular">Angular</b-form-checkbox>
-            <b-form-checkbox value="JavaScript">JavaScript</b-form-checkbox>
-            <b-form-checkbox value="Git">Git</b-form-checkbox>
-            <b-form-checkbox value="HTML">HTML5</b-form-checkbox>
-            <b-form-checkbox value="CSS">CSS3</b-form-checkbox>
-            <b-form-checkbox value="Bootstrap">Bootstrap</b-form-checkbox>
-            <b-form-checkbox value="SemanticUI">Semantic UI</b-form-checkbox>
-            <b-form-checkbox value="API">API</b-form-checkbox>
-            <b-form-checkbox value="Node">Node.js</b-form-checkbox>
-            <b-form-checkbox value="Express">Express</b-form-checkbox>
-            <b-form-checkbox value="Knex">Knex</b-form-checkbox>
-            <b-form-checkbox value="PostgreSQL">PostgreSQL</b-form-checkbox>
-            <b-form-checkbox value="MongoDB">MongoDB</b-form-checkbox>
-            <b-form-checkbox value="Firebase">Firebase</b-form-checkbox>
-            <b-form-checkbox value="Heroku">Heroku</b-form-checkbox>
-            <b-form-checkbox value="OOP">OOP</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="React">React</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Vue">Vue.js</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Angular">Angular</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="JavaScript">JavaScript</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Git">Git</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="HTML">HTML5</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="CSS">CSS3</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Bootstrap">Bootstrap</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="SemanticUI">Semantic UI</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="API">API</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Node">Node.js</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Express">Express</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Knex">Knex</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="PostgreSQL">PostgreSQL</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="MongoDB">MongoDB</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Firebase">Firebase</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="Heroku">Heroku</b-form-checkbox>
+            <b-form-checkbox v-model="form.tags" value="OOP">OOP</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
         <b-button type="submit" variant="success">Apply</b-button>
@@ -59,10 +59,11 @@ export default {
         instructor: null,
         tags: [],
       },
-      categories: [{
-        text: 'Select One',
-        value: null,
-      },
+      categories: [
+        {
+          text: 'Select One',
+          value: null,
+        },
         'Front-End Design',
         'Front-End Development',
         'Front-End Frameworks',
@@ -73,10 +74,11 @@ export default {
         'Workflow (Git)',
         'Other',
       ],
-      instructors: [{
-        text: 'Select One',
-        value: null,
-      },
+      instructors: [
+        {
+          text: 'Select One',
+          value: null,
+        },
         'Marlena Baker',
         'Berto',
         'Patrick Biffle',
@@ -99,8 +101,11 @@ export default {
     };
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
+    onSubmit() {
+      console.log(this.form.tags);
+    },
+    applyFilter() {
+      console.log('HI');
     },
     onReset(evt) {
       evt.preventDefault();
@@ -117,6 +122,8 @@ export default {
 };
 </script>
 
+https://gvideos-api.herokuapp.com/api/videos/?category=%22frontend%22
+
 <style scoped>
 .filters {
   margin-top: 2%;
@@ -124,7 +131,7 @@ export default {
   width: 22%;
 }
 .custom-control-inline {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   width: 30%;
 }
 </style>
