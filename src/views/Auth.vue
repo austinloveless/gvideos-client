@@ -1,5 +1,22 @@
 <template>
-  <div class="login">
+  <div class="auth">
+    <Header />
+    <div class="auth-container">
+      <b-card no-body>
+        <b-tabs pills card>
+          <b-tab title="Login" active>
+            <Auth />
+          </b-tab>
+          <b-tab title="Sign Up">
+            <Register />
+          </b-tab>
+        </b-tabs>
+      </b-card>
+    </div>
+    <Footer />
+  </div>
+</template>
+  <!-- <div class="login">
     <router-view></router-view>
     <Header />
     <div class="main">
@@ -8,32 +25,51 @@
       </div>
     </div>
     <Footer />
-  </div>
-</template>
+  </div> -->
 
 <script>
-// @ is an alias to /src
-// import router from "../router";
 import Header from '@/components/Header';
 import Auth from '@/components/Auth';
+import Register from '@/components/Register';
 import Footer from '@/components/Footer';
 
 export default {
-  name: 'login',
+  name: 'auth',
   components: {
-    // router,
     Header,
     Auth,
+    Register,
     Footer,
+  },
+  data() {
+    return {
+      tabIndex: 0,
+    };
   },
 };
 </script>
 
 <style scoped>
-.main {
+.auth-container {
   padding-top: 100px;
+  /* display: flex;
+  justify-content: center; */
+}
+.card-header {
+  display: flex;
+  justify-content: center;
+}
+.card-header-pills {
+  justify-content: center;
+}
+.card-body {
+  padding: 0px;
 }
 .inline {
   display: inline-block;
+}
+.auth {
+  /* margin-top: 100px; */
+  margin-bottom: 100px;
 }
 </style>
