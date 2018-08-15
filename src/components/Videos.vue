@@ -19,18 +19,18 @@
 
 <script>
 export default {
-  name: "Videos",
+  name: 'Videos',
   data() {
     return {
       videos: [],
       tags: [],
-      apiURL: "https://gvideos-api.herokuapp.com/api/videos"
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
     };
   },
   mounted() {
     fetch(this.apiURL)
       .then(response => response.json())
-      .then(response => {
+      .then((response) => {
         this.videos = response.reverse();
       });
   },
@@ -41,31 +41,9 @@ export default {
       const vidId = url.match(reg)[1];
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
-    }
-  }
+    },
+  },
 };
-const APIURL = "https://gvideos-api.herokuapp.com/api/videos";
-
-function createTodo(val) {
-  return fetch(APIURL, {
-    method: "post",
-    headers: new Headers({ "Content-Type": "application/json" }),
-    body: JSON.stringify({ title: val })
-  }).then(resp => {
-    if (!resp.ok) {
-      if (resp.status >= 400 && resp.status < 500) {
-        return resp.json().then(data => {
-          let err = { errorMessage: data.message };
-          throw err;
-        });
-      } else {
-        let err = { errorMessage: "Blah" };
-        throw err;
-      }
-    }
-    return resp.json();
-  });
-}
 </script>
 
 <style scoped>
@@ -77,37 +55,29 @@ function createTodo(val) {
   display: flex;
   flex-wrap: wrap;
 }
-
 .video-list li {
   margin-bottom: 20px;
 }
-
 .video-list li img {
   height: 140px;
 }
-
 .taglist {
   list-style-type: none;
   padding-left: 0px;
 }
-
 .tag {
   display: inline;
   margin-right: 10px;
 }
-
 .title {
   padding-top: 10px;
 }
-
 .video-card {
   display: inline;
 }
-
 .list-inline {
   display: inline-flex;
 }
-
 .video {
   border: 1px solid black;
   width: 45%;
@@ -115,14 +85,13 @@ function createTodo(val) {
   margin: 10px;
   border-radius: 10px;
 }
-
 .video img {
   max-width: 100%;
   align-self: center;
 }
 .media.video.shadow a {
-  position: relative;
-  color: black;
+    position: relative;
+    color: black;
 }
 .media.video.shadow {
   position: relative;
@@ -138,11 +107,4 @@ function createTodo(val) {
 .media.video.shadow button:nth-of-type(2n) {
   left: 115px;
 }
-/* .button:first-of-type{
-  margin-left: -250px;
-}
-
-.button{
-    margin-top: -50px;
-} */
 </style>
