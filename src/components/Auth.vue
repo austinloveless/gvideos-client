@@ -1,13 +1,13 @@
 <template>
   <div class="container col-3 jumbotron auth">
     <h2 class="title">Login</h2>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @submit="onSubmit">
       <b-form-group id="exampleInputGroup2"
                     label="Username:"
                     label-for="exampleInput2">
         <b-form-input id="exampleInput2"
                       type="text"
-                      v-model="form.name"
+                      v-model="form.username"
                       required
                       placeholder="PUT YOUR USERNAME HERE">
         </b-form-input>
@@ -39,6 +39,7 @@ export default {
   name: 'Auth',
   data() {
     return {
+      loginURL: 'https://gvideos-api.herokuapp.com/auth/login',
       form: {
         username: '',
         password: '',
@@ -49,27 +50,32 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      // alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      this.form.email = '';
-      this.form.password = '';
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false;
-      // this.$nextTick(() => {
-      //   this.show = true;
-      // });
+      return fetch(this.loginURL, {
+        method: 'post',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify(this.form),
+      }).then((resp) => {
+        console.log(resp);
+        if (!resp.ok) {
+          if (resp.status >= 400 || resp.status < 500) {
+            return resp.json().then((data) => {
+              const err = { errorMessage: data.message };
+              throw err;
+            });
+          }
+          const err = { errorMessage: 'Blah' };
+          throw err;
+        }
+        return resp.json();
+      });
     },
   },
 };
 </script>
 
 <style scoped>
-.auth {
-  margin-top: 100px;
-  margin-bottom: 100px;
+.card-body {
+  padding: 0px;
 }
 .title {
   text-align: center;

@@ -5,12 +5,14 @@
     <div class="main">
       <div class="video-container">
         <div class="col-lg-3 inline filter-container">
-          <FormFilter/>
+          <FormFilter />
         </div>
         <div class="col-lg-9 inline">
           <Videos />
         </div>
       </div>
+      <UpdateModal />
+      <DeleteModal />
     </div>
     <Footer />
   </div>
@@ -21,6 +23,8 @@
 import Header from '@/components/Header';
 import FormFilter from '@/components/FormFilter';
 import Videos from '@/components/Videos';
+import UpdateModal from '@/components/UpdateModal';
+import DeleteModal from '@/components/DeleteModal';
 import Footer from '@/components/Footer';
 
 export default {
@@ -29,6 +33,8 @@ export default {
     Header,
     FormFilter,
     Videos,
+    UpdateModal,
+    DeleteModal,
     Footer,
   },
   data() {
@@ -47,7 +53,6 @@ export default {
   methods: {
     addVideo(video) {
       this.videos.push(video);
-      console.log(video);
     },
   },
 };

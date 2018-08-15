@@ -154,19 +154,6 @@ export default {
         return resp.json();
       });
     },
-    onReset(evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      this.form.title = '';
-      this.form.videourl = '';
-      this.form.description = '';
-      this.form.category = null;
-      this.form.instructor = null;
-      this.form.checked = [];
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false;
-      this.$nextTick(() => { this.show = true; });
-    },
   },
 };
 </script>
