@@ -239,11 +239,11 @@ ul.navbar-nav {
   text-decoration: none;
 }
 
-.videos{
+.videos {
   color: #f79020;
 }
 
-.bracket{
+.bracket {
   color: #222;
 }
 </style>
