@@ -9,6 +9,7 @@
 ## Collaborators
 
 - Austin Loveless
+- Levi Boenish
 
 ## Build Setup
 
