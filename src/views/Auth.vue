@@ -54,6 +54,8 @@ export default {
   padding-top: 100px;
   /* display: flex;
   justify-content: center; */
+  width: 100vw;
+  position:fixed;
 }
 .card-header {
   display: flex;
@@ -71,6 +73,7 @@ export default {
 .auth {
   /* margin-top: 100px; */
   margin-bottom: 100px;
+  margin-top: -100px;
 }
 
 
