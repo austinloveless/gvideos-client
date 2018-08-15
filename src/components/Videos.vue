@@ -11,8 +11,8 @@
       </ul>
       <!-- <b-button class="button btn-success" type="submit" variant="primary">Update</b-button> -->
       <!-- <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button> -->
-      <b-btn v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
-      <b-btn v-b-modal.modal1 variant="danger">Delete</b-btn>
+      <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
+      <b-btn v-if="token" v-b-modal.modal1 variant="danger">Delete</b-btn>
     </b-media>
   </ul>
 </template>
@@ -22,6 +22,7 @@ export default {
   name: 'Videos',
   data() {
     return {
+      token: false,
       videos: [],
       tags: [],
       apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
@@ -33,6 +34,9 @@ export default {
       .then((response) => {
         this.videos = response.reverse();
       });
+      if (localStorage.getItem('token')) {
+        this.token = true;
+      }    
   },
   methods: {
     thumbnail(url) {
