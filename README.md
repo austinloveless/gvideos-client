@@ -6,9 +6,13 @@
 
 ![gVideos](https://g90-videos.firebaseapp.com/)
 
+## Collaborators
+
+- Austin Loveless
+
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
