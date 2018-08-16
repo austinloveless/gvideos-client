@@ -4,7 +4,7 @@
     <div class="col-lg-3">
       <div id='filters' class="filters">
         <div>
-          <b-form @submit.prevent="onSubmit">
+          <b-form @submit.prevent="filterCheck">
             <h4 class="filtertitle">Filter Videos By:</h4>
             <b-form-group id="categories"
                         label="Category"
@@ -56,7 +56,7 @@
               </b-form-checkbox-group>
             </b-form-group> -->
             <b-button class="filterbtn" type="submit" variant="success">Apply</b-button>
-            <b-button class="filterbtn" type="reset" variant="danger">Reset</b-button>
+            <b-button @click="resetForm" class="filterbtn" type="reset" variant="danger">Reset</b-button>
           </b-form>
         </div>
       </div>
@@ -72,7 +72,7 @@
           <ul class="tagslist">
             <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
           </ul>
-          <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
+          <!-- <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn> -->
           <b-btn v-if="token" @click="onDelete(video)" variant="danger" v-bind="video">Delete</b-btn>
         </b-media>
       </ul>
@@ -162,17 +162,55 @@ export default {
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
     },
+    filterCheck() {
+      if (this.form.category === null && this.form.instructor === null) {
+        this.baseSubmit();
+      } else if (this.form.category !== null) {
+        this.form.instructor = null;
+        this.categorySubmit();
+      } else if (this.form.instructor !== null) {
+        this.form.category = null;
+        this.instructorSubmit();
+      }
+    },
+    baseSubmit() {
+      fetch(this.apiURL)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
+    },
+    categorySubmit() {
+      fetch(this.apiURL + '/category/' + this.form.category)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
+    },
+    instructorSubmit() {
+      fetch(this.apiURL + '/instructor/' + this.form.instructor)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
+    },
+    resetForm() {
+      this.form.category = null;
+      this.form.instructor = null;
+      this.baseSubmit();
+    },
     onDelete(video) {
       this.video = video;
       this.deleteURL = `https://gvideos-api.herokuapp.com/api/videos/${
         video._id
       }`;
-      console.log(this.deleteURL);
       return fetch(this.deleteURL, {
         method: 'delete'
       })
         .then(resp => {
-          console.log(resp);
           if (!resp.ok) {
             if (resp.status >= 400 && resp.status < 500) {
               return resp.json().then(data => {
@@ -197,7 +235,6 @@ export default {
       this.updateURL = `https://gvideos-api.herokuapp.com/api/videos/${
         video._id
       }`;
-      console.log(this.updateURL);
       return fetch(this.updateURL, {
         method: 'put',
         headers: new Headers({
@@ -205,7 +242,6 @@ export default {
         }),
         body: JSON.stringify({ completed: !todo.completed })
       }).then(resp => {
-        console.log(resp);
         if (!resp.ok) {
           if (resp.status >= 400 && resp.status < 500) {
             return resp.json().then(data => {
@@ -218,15 +254,6 @@ export default {
         }
         return resp.json();
       });
-    },
-    onSubmit() {
-      console.log('Tags: ', this.form.tags);
-      fetch(this.apiURL + '/category/' + this.form.category)
-        .then(response => response.json())
-        .then(response => {
-          this.videos = response.reverse();
-          console.log('RESPONSE: ', response);
-        });
     },
     onReset(evt) {
       evt.preventDefault();
@@ -317,7 +344,7 @@ export default {
   margin-left: 80px;
 }
 
-#filters{
+#filters {
   height: 83vh;
   padding-top: 50px;
   border-right: 2px solid black;
@@ -326,7 +353,7 @@ export default {
   width: 23%;
 }
 
-.filtertitle{
+.filtertitle {
   text-align: center;
   color: #f79020;
 }

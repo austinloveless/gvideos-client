@@ -8,8 +8,7 @@
         <b-form-input id="title"
                       type="text"
                       v-model="form.title"
-                      required
-                      placeholder="Intro to PostgreSQL">
+                      required>
         </b-form-input>
       </b-form-group>
       <b-form-group id="urlGroup"
@@ -18,8 +17,7 @@
         <b-form-input id="url"
                       type="text"
                       v-model="form.url"
-                      required
-                      placeholder="https://www.youtube.com/<URL>">
+                      required>
         </b-form-input>
       </b-form-group>
       <b-form-group id="descriptionGroup"
@@ -27,7 +25,6 @@
                     label-for="description">
         <b-form-textarea id="description"
                           v-model="form.description"
-                          placeholder="Video summary"
                           required
                           :rows="3"
                           :max-rows="6">
@@ -172,10 +169,10 @@ export default {
         })
         .then(json => {
           console.log(json);
+        })
+        .then(json => {
+          router.push({ path: '/' });
         });
-      // .then(json => {
-      //   router.push({ path: '/' });
-      // });
     }
   }
 };
