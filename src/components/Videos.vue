@@ -1,9 +1,11 @@
 <template>
   <div class="col-lg-12">
+    <div class="row">
     <div class="col-lg-3">
       <div id='filters' class="filters">
         <div>
           <b-form @submit.prevent="onSubmit">
+            <h4 class="filtertitle">Filter Videos</h4>
             <b-form-group id="categories"
                         label="Category"
                         label-for="category">
@@ -28,7 +30,7 @@
                             v-model="form.instructor">
               </b-form-select>
             </b-form-group>
-            <b-form-group id="tagGroup"
+            <!-- <b-form-group id="tagGroup"
                           label="Tags"
                           label-for="tags">
               <b-form-checkbox-group v-model="form.checked" id="tags">
@@ -51,9 +53,9 @@
                 <b-form-checkbox v-model="form.tags" value="Heroku">Heroku</b-form-checkbox>
                 <b-form-checkbox v-model="form.tags" value="OOP">OOP</b-form-checkbox>
               </b-form-checkbox-group>
-            </b-form-group>
-            <b-button type="submit" variant="success">Apply</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
+            </b-form-group> -->
+            <b-button class="filterbtn" type="submit" variant="success">Apply</b-button>
+            <b-button class="filterbtn" type="reset" variant="danger">Reset</b-button>
           </b-form>
         </div>
       </div>
@@ -63,7 +65,7 @@
         <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
           <img slot="aside" :src="thumbnail(video.url)" alt="placeholder" />
           <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
-          <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
+          <!-- <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6> -->
           <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
           <p>{{ video.description }}</p>
           <ul class="tagslist">
@@ -74,6 +76,7 @@
         </b-media>
       </ul>
     </div>
+  </div>
   </div>
 </template>
 
@@ -307,5 +310,23 @@ export default {
 }
 .media.video.shadow button:nth-of-type(2n) {
   left: 115px;
+}
+
+.filterbtn:first-of-type {
+  margin-left: 80px;
+}
+
+#filters{
+  height: 83vh;
+  padding-top: 50px;
+  border-right: 2px solid black;
+  padding-right: 10px;
+  position: fixed;
+  width: 23%;
+}
+
+.filtertitle{
+  text-align: center;
+  color: #f79020;
 }
 </style>
