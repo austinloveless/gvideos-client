@@ -172,10 +172,10 @@ export default {
         })
         .then(json => {
           console.log(json);
+        })
+        .then(json => {
+          router.push({ path: '/' });
         });
-      // .then(json => {
-      //   router.push({ path: '/' });
-      // });
     }
   }
 };
