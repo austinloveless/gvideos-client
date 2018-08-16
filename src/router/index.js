@@ -11,24 +11,29 @@ export default new Router({
   mode: 'history',
   base: __dirname,
   routes: [{
-    path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Auth,
-  },
-  // {
-  //   path: '/register',
-  //   name: 'register',
-  //   component: Register,
-  // },
-  {
-    path: '/upload',
-    name: 'upload',
-    component: Upload,
-  },
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/videos',
+      name: 'videos',
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Auth,
+    },
+    // {
+    //   path: '/register',
+    //   name: 'register',
+    //   component: Register,
+    // },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: Upload,
+    },
   ],
 });

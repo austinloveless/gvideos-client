@@ -20,6 +20,7 @@
 
 <script>
 import FormFilter from '@/components/FormFilter';
+import router from '../router';
 
 export default {
   name: 'Videos',
@@ -58,37 +59,44 @@ export default {
       this.video = video;
       this.deleteURL = `https://gvideos-api.herokuapp.com/api/videos/${
         video._id
-}`
+      }`;
       console.log(this.deleteURL);
       return fetch(this.deleteURL, {
         method: 'delete'
-      }).then(resp => {
-        console.log(resp);
-        if (!resp.ok) {
-          if (resp.status >= 400 && resp.status < 500) {
-            return resp.json().then(data => {
-              const err = { errorMessage: data.message };
-              throw err;
-            });
+      })
+        .then(resp => {
+          console.log(resp);
+          if (!resp.ok) {
+            if (resp.status >= 400 && resp.status < 500) {
+              return resp.json().then(data => {
+                const err = { errorMessage: data.message };
+                throw err;
+              });
+            }
+            const err = { errorMessage: 'Blah' };
+            throw err;
           }
-          const err = { errorMessage: 'Blah' };
-          throw err;
-        }
-        return resp.json();
-      });
+          return resp.json();
+        })
+        .then(json => {
+          router.push({ path: '/login' });
+        })
+        .then(json => {
+          router.push({ path: '/' });
+        });
     },
     onUpdate(video) {
       this.video = video;
       this.updateURL = `https://gvideos-api.herokuapp.com/api/videos/${
         video._id
-}`
+      }`;
       console.log(this.updateURL);
       return fetch(this.updateURL, {
         method: 'put',
         headers: new Headers({
-    "Content-Type": "application/json"
-  }),
-  body: JSON.stringify({ completed: !todo.completed })
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({ completed: !todo.completed })
       }).then(resp => {
         console.log(resp);
         if (!resp.ok) {
