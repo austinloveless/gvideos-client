@@ -106,7 +106,13 @@ ul.navbar-nav {
 }
 
 .navbar-nav a:active {
-  background-color: #ae0001;
+  background-color: #f79020;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.navbar-nav a:focus {
+  background-color: #f79020;
   color: #fff !important;
   text-decoration: none;
 }

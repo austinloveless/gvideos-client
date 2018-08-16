@@ -4,10 +4,10 @@
     <Header />
     <div class="main">
       <div class="video-container">
-        <div class="col-lg-3 col-md-3 inline filter-container">
+        <!-- <div class="col-lg-3 col-md-3 inline filter-container">
           <FormFilter />
-        </div>
-        <div class="col-lg-9 inline">
+        </div> -->
+        <div class="col-lg-12 inline">
           <Videos />
         </div>
       </div>
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      videos: [],
+      videos: null,
       apiURL: 'https://gvideos-api.herokuapp.com/api/videos'
     };
   },
@@ -62,7 +62,8 @@ export default {
         .then(response => response.json())
         .then(response => {
           this.videos = response.reverse();
-          console.log('RESPONSE: ', response);
+          // console.log('RESPONSE: ', response);
+          console.log(this.videos, 'Hi videos');
         });
     }
   }
