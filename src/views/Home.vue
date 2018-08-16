@@ -4,7 +4,7 @@
     <Header />
     <div class="main">
       <div class="video-container">
-        <div class="col-lg-3 inline filter-container">
+        <div class="col-lg-3 col-md-3 inline filter-container">
           <FormFilter />
         </div>
         <div class="col-lg-9 inline">
