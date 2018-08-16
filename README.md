@@ -4,7 +4,7 @@
 
 ## Deployed URL
 
-![gVideos](https://g90-videos.firebaseapp.com/)
+[gVideos](https://g90-videos.firebaseapp.com/)
 
 ## Collaborators
 
