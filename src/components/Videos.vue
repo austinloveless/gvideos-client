@@ -1,18 +1,80 @@
 <template>
-  <ul class="video-list list-unstyled">
-    <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
-      <img slot="aside" :src="thumbnail(video.url)" alt="placeholder" />
-      <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
-      <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
-      <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
-      <p>{{ video.description }}</p>
-      <ul class="tagslist">
-        <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
+  <div class="col-lg-12">
+    <div class="col-lg-3">
+      <div id='filters' class="filters">
+        <div>
+          <b-form @submit.prevent="onSubmit">
+            <b-form-group id="categories"
+                        label="Category"
+                        label-for="category">
+              <b-form-select v-model="form.category">
+                <option :value="null">Select a Category</option>
+                <option value="frontenddesign">Front-End Design</option>
+                <option value="frontenddevelopment">Front-End Development</option>
+                <option value="frontendframeworks">Front-End Frameworks</option>
+                <option value="backendydatabase">Back-End (With Database)</option>
+                <option value="backendndatabase">Back-End (No Database)</option>
+                <option value="fullstack">Full-Stack</option>
+                <option value="oop">Object Oriented Programming</option>
+                <option value="workflow">Workflow (Git)</option>
+                <option value="other">Other</option>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group id="instructors"
+                          label="Instructor"
+                          label-for="instructor">
+              <b-form-select id="instructor"
+                            :options="instructors"
+                            v-model="form.instructor">
+              </b-form-select>
+            </b-form-group>
+            <b-form-group id="tagGroup"
+                          label="Tags"
+                          label-for="tags">
+              <b-form-checkbox-group v-model="form.checked" id="tags">
+                <b-form-checkbox v-model="form.tags" value="React">React</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Vue">Vue.js</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Angular">Angular</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="JavaScript">JavaScript</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Git">Git</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="HTML">HTML5</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="CSS">CSS3</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Bootstrap">Bootstrap</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="SemanticUI">Semantic UI</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="API">API</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Node">Node.js</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Express">Express</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Knex">Knex</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="PostgreSQL">PostgreSQL</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="MongoDB">MongoDB</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Firebase">Firebase</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="Heroku">Heroku</b-form-checkbox>
+                <b-form-checkbox v-model="form.tags" value="OOP">OOP</b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>
+            <b-button type="submit" variant="success">Apply</b-button>
+            <b-button type="reset" variant="danger">Reset</b-button>
+          </b-form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <ul class="video-list list-unstyled">
+        <b-media class="video shadow" tag="li" v-for="video in videos" :key="video._id">
+          <img slot="aside" :src="thumbnail(video.url)" alt="placeholder" />
+          <h4 class="mt-0 mb-1 title"><a :href="video.url">{{ video.title }}</a></h4>
+          <h6 class="mt-0 mb-1">Category: {{ video.category }}</h6>
+          <h6 class="mt-0 mb-1">Instructor: {{ video.instructor }}</h6>
+          <p>{{ video.description }}</p>
+          <ul class="tagslist">
+            <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
+          </ul>
+          <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
+          <b-btn v-if="token" @click="onDelete(video)" variant="danger" v-bind="video">Delete</b-btn>
+        </b-media>
       </ul>
-      <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
-      <b-btn v-if="token" @click="onDelete(video)" variant="danger" v-bind="video">Delete</b-btn>
-    </b-media>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -30,7 +92,51 @@ export default {
       videos: [],
       video: this.video,
       tags: [],
-      apiURL: 'https://gvideos-api.herokuapp.com/api/videos'
+      apiURL: 'https://gvideos-api.herokuapp.com/api/videos',
+      form: {
+        category: null,
+        instructor: null,
+        tags: []
+      },
+      categories: [
+        {
+          text: 'Select One',
+          value: null
+        },
+        'Front-End Design',
+        'Front-End Development',
+        'Front-End Frameworks',
+        'Back-End (No Database)',
+        'Back-End (With Database)',
+        'Full-Stack',
+        'Object Oriented Programming',
+        'Workflow (Git)',
+        'Other'
+      ],
+      instructors: [
+        {
+          text: 'Select One',
+          value: null
+        },
+        'Marlena Baker',
+        'Berto',
+        'Patrick Biffle',
+        'Kyle Coberly',
+        'Chad Drummond',
+        'Sean Helvey',
+        'Nmuta Jones',
+        'Dan Levy',
+        'James Mann',
+        'Brooks Patton',
+        'CJ Reynolds',
+        'Lizz Robbins',
+        'Kim Schlesinger',
+        'James Schultz',
+        'Matt Winzer',
+        'Other - Galvanize',
+        'Other - Non-Galvanize'
+      ],
+      show: true
     };
   },
   mounted() {
@@ -107,6 +213,26 @@ export default {
           throw err;
         }
         return resp.json();
+      });
+    },
+    onSubmit() {
+      console.log('Tags: ', this.form.tags);
+      fetch(this.apiURL + '/category/' + this.form.category)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      this.form.category = null;
+      this.form.instructor = null;
+      this.form.tags = [];
+      this.form.checked = [];
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
       });
     }
   }
