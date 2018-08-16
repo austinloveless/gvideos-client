@@ -5,7 +5,7 @@
       <div id='filters' class="filters">
         <div>
           <b-form @submit.prevent="onSubmit">
-            <h4 class="filtertitle">Filter Videos</h4>
+            <h4 class="filtertitle">Filter Videos By:</h4>
             <b-form-group id="categories"
                         label="Category"
                         label-for="category">
@@ -22,6 +22,7 @@
                 <option value="other">Other</option>
               </b-form-select>
             </b-form-group>
+            <h4 class="filtertitle">Or</h4>
             <b-form-group id="instructors"
                           label="Instructor"
                           label-for="instructor">
