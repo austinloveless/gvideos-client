@@ -1,7 +1,7 @@
 <template>
   <div id='filters' class="filters">
     <div>
-      <b-form @submit.prevent="onSubmit">
+      <b-form @submit.prevent="filterCheck">
         <b-form-group id="categories"
                     label="Category"
                     label-for="category">
@@ -110,7 +110,22 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
+    filterCheck() {
+      if (this.form.category === null) {
+        return baseSubmit();
+      } else if (this.form.category !== null) {
+        return categorySubmit();
+      }
+    },
+    baseSubmit() {
+      fetch(this.apiURL)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
+    },
+    categorySubmit() {
       console.log('Category selected: ', this.form.category);
       fetch(this.apiURL + '/category/' + this.form.category)
         .then(response => response.json())
