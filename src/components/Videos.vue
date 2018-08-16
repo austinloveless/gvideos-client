@@ -19,8 +19,13 @@
 </template>
 
 <script>
+import FormFilter from '@/components/FormFilter';
+
 export default {
   name: 'Videos',
+  components: {
+    FormFilter
+  },
   data() {
     return {
       token: false,
@@ -49,12 +54,13 @@ export default {
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
     },
-    videoCheck(video) {
-      this.video = video;
-      console.log(video._id);
-    },
     onDelete(video) {
-      return fetch(this.apiURL, {
+      this.video = video;
+      this.deleteURL = `https://gvideos-api.herokuapp.com/api/videos/${
+        video._id
+      }`;
+      console.log(this.deleteURL);
+      return fetch(this.deleteURL, {
         method: 'delete'
       }).then(resp => {
         console.log(resp);

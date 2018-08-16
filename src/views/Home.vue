@@ -28,7 +28,6 @@ import DeleteModal from '@/components/DeleteModal';
 import Footer from '@/components/Footer';
 import VueJwtDecode from 'vue-jwt-decode';
 
-
 export default {
   userLoggedIn: false,
   name: 'home',
@@ -56,6 +55,15 @@ export default {
   methods: {
     addVideo(video) {
       this.videos.push(video);
+    },
+    onSubmit() {
+      console.log('Category selected: ', this.form.category);
+      fetch(this.apiURL + '/category/' + this.form.category)
+        .then(response => response.json())
+        .then(response => {
+          this.videos = response.reverse();
+          console.log('RESPONSE: ', response);
+        });
     }
   }
 };

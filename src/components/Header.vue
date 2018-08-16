@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import router from '../router';
+
 export default {
   name: 'Header',
   data() {
@@ -27,15 +29,14 @@ export default {
     };
   },
   mounted() {
-    // localStorage.setItem('token', 'anything you fuckin want');
     if (localStorage.getItem('token')) {
       this.token = true;
     }
   },
   methods: {
     signOut() {
-      console.log('Howdy!');
       localStorage.clear();
+      router.push({ path: '/login' });
     }
   }
 };
@@ -93,6 +94,7 @@ ul.navbar-nav {
   text-decoration: none;
   font-size: 18px;
   font-weight: 700;
+  cursor: pointer;
   -webkit-transition: color, background-color, 500ms;
   transition: color, background-color, 500ms;
 }
