@@ -61,7 +61,7 @@
       <b-form-group id="tagGroup"
                     label="Tags"
                     label-for="tags">
-        <b-form-checkbox-group v-model="form.checked" id="tags">
+        <b-form-checkbox-group v-model="form.tags" id="tags">
           <b-form-checkbox value="React">React</b-form-checkbox>
           <b-form-checkbox value="Vue">Vue.js</b-form-checkbox>
           <b-form-checkbox value="Angular">Angular</b-form-checkbox>
@@ -147,6 +147,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      console.log('Trying to create ', this.form);
       const token = localStorage.getItem('token');
       return fetch(this.APIURL, {
         method: 'post',
@@ -171,10 +172,10 @@ export default {
         })
         .then(json => {
           console.log(json);
-        })
-        .then(json => {
-          router.push({ path: '/' });
         });
+      // .then(json => {
+      //   router.push({ path: '/' });
+      // });
     }
   }
 };
