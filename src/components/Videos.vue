@@ -139,6 +139,13 @@ export default {
 .title {
   padding-top: 10px;
 }
+.title a {
+  color: #f79020 !important;
+}
+.title a:hover {
+  color: #222 !important;
+  text-decoration: none;
+}
 .video-card {
   display: inline;
 }
