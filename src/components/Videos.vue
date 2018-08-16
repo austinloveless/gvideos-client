@@ -9,10 +9,7 @@
       <ul class="tagslist">
         <li class="tag" v-for="tag in video.tags" v-bind:key="tag">{{ tag }}</li>
       </ul>
-      <!-- <b-button class="button btn-success" type="submit" variant="primary">Update</b-button> -->
-      <!-- <b-button class="button btn-danger" type="submit" variant="primary">Delete</b-button> -->
       <b-btn v-if="token" v-b-modal.modallg.modal-center variant="primary">Update</b-btn>
-      <!-- <b-btn v-if="token" v-b-modal.modal1 variant="danger">Delete</b-btn> -->
       <b-btn v-if="token" @click="onDelete(video)" variant="danger" v-bind="video">Delete</b-btn>
     </b-media>
   </ul>
