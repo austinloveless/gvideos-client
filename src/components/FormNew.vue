@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import router from '../router';
+
 export default {
   name: 'Upload',
   data() {
@@ -169,6 +171,9 @@ export default {
         })
         .then(json => {
           console.log(json);
+        })
+        .then(json => {
+          router.push({ path: '/' });
         });
     }
   }
