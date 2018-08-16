@@ -19,8 +19,13 @@
 </template>
 
 <script>
+import FormFilter from '@/components/FormFilter';
+
 export default {
   name: 'Videos',
+  components: {
+    FormFilter
+  },
   data() {
     return {
       token: false,
@@ -48,10 +53,6 @@ export default {
       const vidId = url.match(reg)[1];
       const thumb = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
       return thumb;
-    },
-    videoCheck(video) {
-      this.video = video;
-      console.log(video._id);
     },
     onDelete(video) {
       this.video = video;

@@ -36,10 +36,17 @@
       <b-form-group id="categories"
                     label="Category"
                     label-for="category">
-        <b-form-select id="category"
-                      :options="categories"
-                      required
-                      v-model="form.category">
+        <b-form-select v-model="form.category">
+          <option :value="null">Select a Category</option>
+          <option value="frontenddesign">Front-End Design</option>
+          <option value="frontenddevelopment">Front-End Development</option>
+          <option value="frontendframeworks">Front-End Frameworks</option>
+          <option value="backendydatabase">Back-End (With Database)</option>
+          <option value="backendndatabase">Back-End (No Database)</option>
+          <option value="fullstack">Full-Stack</option>
+          <option value="oop">Object Oriented Programming</option>
+          <option value="workflow">Workflow (Git)</option>
+          <option value="other">Other</option>
         </b-form-select>
       </b-form-group>
       <b-form-group id="exampleInputGroup3"
@@ -138,31 +145,33 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem('token');
       return fetch(this.APIURL, {
         method: 'post',
-        headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }),
-        body: JSON.stringify(this.form),
-      }).then((resp) => {
-
-        if (!resp.ok) {
-          if (resp.status >= 400 && resp.status < 500) {
-            return resp.json().then(data => {
-              const err = { errorMessage: data.message };
-              throw err;
-            });
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }),
+        body: JSON.stringify(this.form)
+      })
+        .then(resp => {
+          if (!resp.ok) {
+            if (resp.status >= 400 && resp.status < 500) {
+              return resp.json().then(data => {
+                const err = { errorMessage: data.message };
+                throw err;
+              });
+            }
+            const err = { errorMessage: 'Blah' };
+            throw err;
           }
-          const err = { errorMessage: 'Blah' };
-          throw err;
-        }
-        return resp.json();
-      })
-      .then(json=>{
-        console.log(json);
-      })
-    },
-  },
-
+          return resp.json();
+        })
+        .then(json => {
+          console.log(json);
+        });
+    }
+  }
 };
 </script>
 

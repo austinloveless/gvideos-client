@@ -50,28 +50,31 @@ export default {
         method: 'post',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(this.form)
-      }).then(resp => {
-        console.log(resp);
-        if (!resp.ok) {
-          if (resp.status >= 400 || resp.status < 500) {
-            return resp.json().then(data => {
-              const err = { errorMessage: data.message };
-              throw err;
-            });
-          } else if (resp.status === 200) {
-            localStorage.setItem('Balls');
+      })
+        .then(resp => {
+          console.log(resp);
+          if (!resp.ok) {
+            if (resp.status >= 400 || resp.status < 500) {
+              return resp.json().then(data => {
+                const err = { errorMessage: data.message };
+                throw err;
+              });
+            } else if (resp.status === 200) {
+              localStorage.setItem('Balls');
+            }
+            const err = { errorMessage: 'Blah' };
+            throw err;
           }
-          const err = { errorMessage: 'Blah' };
-          throw err;
-        }
-        return resp.json();
-      })
-      .then((json)=>{
-        localStorage.setItem('token', json.token)
-      })
-    },
-  },
-
+          return resp.json();
+        })
+        .then(json => {
+          localStorage.setItem('token', json.token);
+        })
+        .then(json => {
+          router.push({ path: '/' });
+        });
+    }
+  }
 };
 </script>
 

@@ -5,9 +5,17 @@
         <b-form-group id="categories"
                     label="Category"
                     label-for="category">
-          <b-form-select id="category"
-                        :options="categories"
-                        v-model="form.category">
+          <b-form-select v-model="form.category">
+            <option :value="null">Select a Category</option>
+            <option value="frontenddesign">Front-End Design</option>
+            <option value="frontenddevelopment">Front-End Development</option>
+            <option value="frontendframeworks">Front-End Frameworks</option>
+            <option value="backendydatabase">Back-End (With Database)</option>
+            <option value="backendndatabase">Back-End (No Database)</option>
+            <option value="fullstack">Full-Stack</option>
+            <option value="oop">Object Oriented Programming</option>
+            <option value="workflow">Workflow (Git)</option>
+            <option value="other">Other</option>
           </b-form-select>
         </b-form-group>
         <b-form-group id="instructors"
@@ -58,12 +66,12 @@ export default {
       form: {
         category: null,
         instructor: null,
-        tags: [],
+        tags: []
       },
       categories: [
         {
           text: 'Select One',
-          value: null,
+          value: null
         },
         'Front-End Design',
         'Front-End Development',
@@ -73,12 +81,12 @@ export default {
         'Full-Stack',
         'Object Oriented Programming',
         'Workflow (Git)',
-        'Other',
+        'Other'
       ],
       instructors: [
         {
           text: 'Select One',
-          value: null,
+          value: null
         },
         'Marlena Baker',
         'Berto',
@@ -96,19 +104,19 @@ export default {
         'James Schultz',
         'Matt Winzer',
         'Other - Galvanize',
-        'Other - Non-Galvanize',
+        'Other - Non-Galvanize'
       ],
-      show: true,
+      show: true
     };
   },
   methods: {
     onSubmit() {
-      console.log("Category selected: ", this.form.category);
-      fetch(this.apiURL + "/category/" + this.form.category)
+      console.log('Category selected: ', this.form.category);
+      fetch(this.apiURL + '/category/' + this.form.category)
         .then(response => response.json())
-        .then((response) => {
+        .then(response => {
           this.videos = response.reverse();
-          console.log("RESPONSE: ", response);
+          console.log('RESPONSE: ', response);
         });
     },
     onReset(evt) {
@@ -121,12 +129,12 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
-https://gvideos-api.herokuapp.com/api/videos/?category=%22frontend%22
+
 
 <style scoped>
 .filters {
