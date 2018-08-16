@@ -1,6 +1,9 @@
 <template>
   <div class="container col-3 jumbotron auth">
     <h2 class="title">Register</h2>
+    <div>
+      <b-alert variant="danger" v-if="ballz">Uh oh! Please try again.</b-alert>
+    </div>
     <b-form @submit="onSubmit">
       <b-form-group id="usernameGroup"
                     label="Username"
@@ -39,7 +42,9 @@ export default {
         username: '',
         password: ''
       },
-      show: true
+      show: true,
+      showAlert: false,
+      ballz: false
       // users: [],
     };
   },
@@ -58,6 +63,7 @@ export default {
               return resp.json().then(data => {
                 const err = { errorMessage: data.message };
                 throw err;
+                ballz = true;
               });
             } else if (resp.status === 200) {
               localStorage.setItem('Balls');
